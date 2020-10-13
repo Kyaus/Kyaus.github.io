@@ -11,13 +11,26 @@
   <meta name="description" content="一、下载并安装所需要的一些部件（PS：此处用到了的是python2.7版本）部件主要包括开发包（matplotlib，numpy，opencv_python）以及PIL和pynaoqi。这些所需要的东西我会将其打包放在百度网盘当中，大家可以通过提取码去提取。 链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1871RI8M4O2W7QcWiH978xA提取码：cslz  二、各个东西的使用方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="配置nao机器人的环境">
-<meta property="og:url" content="http://example.com/2020/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/index.html">
+<meta property="og:url" content="http://example.com/2020/10/12/%E9%85%8D%E7%BD%AENAO%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="一、下载并安装所需要的一些部件（PS：此处用到了的是python2.7版本）部件主要包括开发包（matplotlib，numpy，opencv_python）以及PIL和pynaoqi。这些所需要的东西我会将其打包放在百度网盘当中，大家可以通过提取码去提取。 链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1871RI8M4O2W7QcWiH978xA提取码：cslz  二、各个东西的使用方">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/10/13/oQelF4nLIhSgR8u.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/R9u1jXMGv4HUPzC.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/H6UM1RGnzj4IOgP.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/UKVjoQbRWy7sezN.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/XP9qBRLpYKgdksa.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/Xsu7LtZd1azIfPg.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/zmDptf6IEOlZcei.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/o7NvwmK9DTqnVks.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/ek3xHfKrBwzYLEW.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/PfbgJy2o3ZYqzUD.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/5atDo61uFSsRLE3.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/PpYBqLrRKXF8C63.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/RSdXHKfkmejBxr4.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/bfOMhjpGsC6gXET.png">
 <meta property="article:published_time" content="2020-10-12T12:09:49.000Z">
-<meta property="article:modified_time" content="2020-10-13T11:34:01.242Z">
+<meta property="article:modified_time" content="2020-10-13T11:56:21.121Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/10/13/oQelF4nLIhSgR8u.png">
@@ -159,9 +172,29 @@
 <p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1871RI8M4O2W7QcWiH978xA">https://pan.baidu.com/s/1871RI8M4O2W7QcWiH978xA</a><br>提取码：cslz</p>
 <hr>
 <h2 id="二、各个东西的使用方法"><a href="#二、各个东西的使用方法" class="headerlink" title="二、各个东西的使用方法"></a>二、各个东西的使用方法</h2><p>文件夹里边包含四样东西，如图：<br><img src="https://i.loli.net/2020/10/13/oQelF4nLIhSgR8u.png" alt="20190810163336680.png"></p>
+<p>第一个：关于python2.7的安装</p>
+<p>先说最后一个，这个是python2.7，因为要向运行python2的相关东西，需要将环境配置好，所以这个是首先需要完成的。安装python2.7的时候要记住安装的路径，最好是默认的C盘路径。比如我的就是直接在C盘：<br><img src="https://i.loli.net/2020/10/13/R9u1jXMGv4HUPzC.png" alt="1.png"></p>
+<p>图中的python27就是安装好的python环境，接下来需要配置环境变量，点开python27，会出现如下图片：<br><img src="https://i.loli.net/2020/10/13/H6UM1RGnzj4IOgP.png" alt="2.png"></p>
+<p>大家可以从里边看到各种各样的文件夹，我们先记录下来此刻的路径，比如我的是：C:\Python27。然后大家可以从里边看到一个名字叫Scripts的文件夹，我们打开这个文件夹，记录此刻的路径，比如我的是：C:\Python27\Scripts。</p>
+<p>下面正式来配置环境变量，右击“此电脑”，打开属性，然后点击高级系统设置：<br><img src="https://i.loli.net/2020/10/13/UKVjoQbRWy7sezN.png" alt="3.png"></p>
+<p>进入如下界面，然后点击环境变量：<br><img src="https://i.loli.net/2020/10/13/XP9qBRLpYKgdksa.png" alt="4.png"></p>
+<p>然后点系统变量里边的Path，如图所示：<br><img src="https://i.loli.net/2020/10/13/Xsu7LtZd1azIfPg.png" alt="5.png"></p>
+<p>点击新建，注意需要新建两次，因为要把上边保存的两个地址放进去，放完之后如图所示：<br><img src="https://i.loli.net/2020/10/13/zmDptf6IEOlZcei.png" alt="6.png"></p>
+<p>到此，python2.7的环境就安装好了。</p>
+<p>第二步：安装PIL</p>
+<p>python2.7安装完毕之后，我们点开第二个PIL：<br><img src="https://i.loli.net/2020/10/13/o7NvwmK9DTqnVks.png" alt="7.png"></p>
+<p>点击下一步：<br><img src="https://i.loli.net/2020/10/13/ek3xHfKrBwzYLEW.png" alt="8.png"></p>
+<p>看到里边是python2.7就不用管了，一路下一步直至安装完毕即可。</p>
+<p>第三步：安装pynaoqi</p>
+<p>直接点开第三个：<br><img src="https://i.loli.net/2020/10/13/PfbgJy2o3ZYqzUD.png" alt="9.png"></p>
+<p>点击下一步：<br><img src="https://i.loli.net/2020/10/13/5atDo61uFSsRLE3.png" alt="10.png"></p>
+<p>因为我安装了python3.7，所以会出现两个版本，你们没有安装的话只会出现一个版本，我们机器人用的是python2.7的版本，所以选择最上边哪一个，一直下一步直至安装就可以了。</p>
+<p>第四步：导入python的三个包：<br>首先我们点开第一个文件夹，将里边的三个包复制到python2.7的Scripts所在的路径下。<br>然后打开cmd命令行，转到python2.7的Scripts所在的路径下<br><img src="https://i.loli.net/2020/10/13/PpYBqLrRKXF8C63.png" alt="11.png"></p>
+<p>比如拿第二个包做例子需要如下指令pip install + 包的名称（后缀名也要加上），比如我的可以写成这样：<br><img src="https://i.loli.net/2020/10/13/RSdXHKfkmejBxr4.png" alt="12.png"></p>
+<p>所以写好之后回车即可：<br><img src="https://i.loli.net/2020/10/13/bfOMhjpGsC6gXET.png" alt="13.png"></p>
+<p>这样子代表安装完毕。同理，第一个和第三个也要这样做，第一个应该会出现一些进度条之类的，不用管它，静静地等待安装完毕即可。只要没有出现一片红色的单词就证明安装没有问题。</p>
+<p>三个包安装完毕后，nao机器人的环境也就配置好了。</p>
 <hr>
-<p>##参考文献</p>
-<p><a target="_blank" rel="noopener" href="http://www.codesheep.cnf/">www.codesheep.cnf</a></p>
 
         </div>
         <div class="post-reply">
