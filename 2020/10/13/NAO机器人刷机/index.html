@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>NAO机器人刷机 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、首先准备好刷机所需要的工具刷机工具下载地址：链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1wWt2rpGX6Hlk3lyUQpsPrA提取码：w0ml复制这段内容后打开百度网盘手机App，操作更方便哦  二、格式化U盘，删除驱动Win+R  然后输入Diskpart 输入以下语句：list volumeselect volume number(为U盘对应的编号)clean(删除U盘的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NAO机器人刷机">
+<meta property="og:url" content="http://example.com/2020/10/13/NAO%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%88%B7%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、首先准备好刷机所需要的工具刷机工具下载地址：链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1wWt2rpGX6Hlk3lyUQpsPrA提取码：w0ml复制这段内容后打开百度网盘手机App，操作更方便哦  二、格式化U盘，删除驱动Win+R  然后输入Diskpart 输入以下语句：list volumeselect volume number(为U盘对应的编号)clean(删除U盘的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/6mGRli5wfYqEZ2K.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/xsY3zODvt15fPIj.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/YoEIKkDTxBX5AGd.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/13/2r7StToazCujFdw.png">
+<meta property="article:published_time" content="2020-10-13T12:26:26.000Z">
+<meta property="article:modified_time" content="2020-10-13T15:36:18.319Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/10/13/6mGRli5wfYqEZ2K.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">Kyaus</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>NAO机器人刷机</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://s1.ax1x.com/2020/10/13/0h0A0J.th.jpg">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Kyaus</span>
+                <span class="post-date sub-title">at: 2020-10-13</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h2 id="一、首先准备好刷机所需要的工具"><a href="#一、首先准备好刷机所需要的工具" class="headerlink" title="一、首先准备好刷机所需要的工具"></a>一、首先准备好刷机所需要的工具</h2><p>刷机工具下载地址：<br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1wWt2rpGX6Hlk3lyUQpsPrA">https://pan.baidu.com/s/1wWt2rpGX6Hlk3lyUQpsPrA</a><br>提取码：w0ml<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+<hr>
+<h2 id="二、格式化U盘，删除驱动"><a href="#二、格式化U盘，删除驱动" class="headerlink" title="二、格式化U盘，删除驱动"></a>二、格式化U盘，删除驱动</h2><p>Win+R  然后输入Diskpart</p>
+<p>输入以下语句：<br>list volume<br>select volume number(为U盘对应的编号)<br>clean(删除U盘的文件和配置信息，在这里只通过某些软件格式化后是不可行的)</p>
+<hr>
+<h2 id="三、右键flasher-bat选择以管理员形式打开"><a href="#三、右键flasher-bat选择以管理员形式打开" class="headerlink" title="三、右键flasher.bat选择以管理员形式打开"></a>三、右键flasher.bat选择以管理员形式打开</h2><p><img src="https://i.loli.net/2020/10/13/6mGRli5wfYqEZ2K.png" alt="1.png"></p>
+<hr>
+<h2 id="四、选择系统"><a href="#四、选择系统" class="headerlink" title="四、选择系统"></a>四、选择系统</h2><p><img src="https://i.loli.net/2020/10/13/xsY3zODvt15fPIj.png" alt="2.png"><br>这两个是五代机器人的</p>
+<p><img src="https://i.loli.net/2020/10/13/YoEIKkDTxBX5AGd.png" alt="3.png"><br>这个是六代机器人的</p>
+<hr>
+<h2 id="五、设置flasher"><a href="#五、设置flasher" class="headerlink" title="五、设置flasher"></a>五、设置flasher</h2><p><img src="https://i.loli.net/2020/10/13/2r7StToazCujFdw.png" alt="4.png"></p>
+<h1 id="最上边一个选择系统镜像的路径"><a href="#最上边一个选择系统镜像的路径" class="headerlink" title="最上边一个选择系统镜像的路径"></a>最上边一个选择系统镜像的路径</h1><h1 id="中间不用管"><a href="#中间不用管" class="headerlink" title="中间不用管"></a>中间不用管</h1><h1 id="Factory-reset-打钩"><a href="#Factory-reset-打钩" class="headerlink" title="Factory reset 打钩"></a>Factory reset 打钩</h1><h1 id="点击Write"><a href="#点击Write" class="headerlink" title="点击Write"></a>点击Write</h1><hr>
+<h2 id="六、完成"><a href="#六、完成" class="headerlink" title="六、完成"></a>六、完成</h2>
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDE1NS8xMDY5Mg">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a target="_blank" rel="noopener" href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2020
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="/js/search_core.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>
