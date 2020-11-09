@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>Oracle提示文字与格式字符串不匹配 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原因：如果直接输入日期，没有指定日期格式，就会导致插入的时间格式和数据库现有的时间格式不一致，从而报错。 如下图： 1234567891011CREATE TABLE STU_CON(学号 CHAR(4),姓名 CHAR(9),性别 CHAR(3),出生日期 DATE,家庭住址 VARCHAR2(50),CONSTRAINT PK_SID PRIMARY KEY(学号),CONSTRAINT UK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle提示文字与格式字符串不匹配">
+<meta property="og:url" content="http://example.com/2020/11/09/Oracle%E6%8F%90%E7%A4%BA%E6%96%87%E5%AD%97%E4%B8%8E%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8D%E5%8C%B9%E9%85%8D/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="原因：如果直接输入日期，没有指定日期格式，就会导致插入的时间格式和数据库现有的时间格式不一致，从而报错。 如下图： 1234567891011CREATE TABLE STU_CON(学号 CHAR(4),姓名 CHAR(9),性别 CHAR(3),出生日期 DATE,家庭住址 VARCHAR2(50),CONSTRAINT PK_SID PRIMARY KEY(学号),CONSTRAINT UK">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/11/09/yrt8GYA6mjnSBlU.png">
+<meta property="article:published_time" content="2020-11-09T09:09:52.000Z">
+<meta property="article:modified_time" content="2020-11-09T09:56:27.690Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/09/yrt8GYA6mjnSBlU.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">Kyaus</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>Oracle提示文字与格式字符串不匹配</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://s1.ax1x.com/2020/10/13/0h0A0J.th.jpg">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Kyaus</span>
+                <span class="post-date sub-title">at: 2020-11-09</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <p>原因：<br>如果直接输入日期，没有指定日期格式，就会导致插入的时间格式和数据库现有的时间格式不一致，从而报错。<br><img src="https://i.loli.net/2020/11/09/yrt8GYA6mjnSBlU.png" alt="1.png"></p>
+<p>如下图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE STU_CON</span><br><span class="line">(</span><br><span class="line">学号 CHAR(4),</span><br><span class="line">姓名 CHAR(9),</span><br><span class="line">性别 CHAR(3),</span><br><span class="line">出生日期 DATE,</span><br><span class="line">家庭住址 VARCHAR2(50),</span><br><span class="line">CONSTRAINT PK_SID PRIMARY KEY(学号),</span><br><span class="line">CONSTRAINT UK_NAME UNIQUE(姓名),</span><br><span class="line">CONSTRAINT CK_BDAY CHECK(出生日期&gt;&#39;1988-01-01&#39;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>所以必须指明日期格式，可以使用TO_DATE的话，需要注意的是将日期格式也声明。<br>比如：<br>to_date(‘1988-01-01’)写成这样就自掘坟墓了，所以应该写成：<br>to_date(‘1988-01-01’,’yyyy-mm-dd’)<br>to_date(‘1988-01-01 10:10:10’ , ‘yyyy-mm-dd hh24:mi:ss’)</p>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDE1NS8xMDY5Mg">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a target="_blank" rel="noopener" href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2020
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="/js/search_core.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>
