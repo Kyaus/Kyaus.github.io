@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>海明码 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="海明码设计思路：基于偶校验（“1”的个数为偶数）–&gt; 分成多个组 –&gt; 每组一个校验位，有多个校验位 –&gt; 标注出错误位置需要多少个校验位？信息位：n个校验位：k个~~2^k种状态信息位+校验位&#x3D;n+k –&gt; 所以2^k种状态应包含n+k种错误情况外加一种正确情况 –&gt; 2^k≥n+k+1例如：n&#x3D;4,则k&#x3D;3，即需要添加3个校验位才能满足条件  海明码的解题步骤（例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="海明码">
+<meta property="og:url" content="http://example.com/2020/11/16/%E6%B5%B7%E6%98%8E%E7%A0%81/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="海明码设计思路：基于偶校验（“1”的个数为偶数）–&gt; 分成多个组 –&gt; 每组一个校验位，有多个校验位 –&gt; 标注出错误位置需要多少个校验位？信息位：n个校验位：k个~~2^k种状态信息位+校验位&#x3D;n+k –&gt; 所以2^k种状态应包含n+k种错误情况外加一种正确情况 –&gt; 2^k≥n+k+1例如：n&#x3D;4,则k&#x3D;3，即需要添加3个校验位才能满足条件  海明码的解题步骤（例">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-16T06:41:54.000Z">
+<meta property="article:modified_time" content="2020-11-16T07:20:23.640Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">Kyaus</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item" href="/about">
+                About
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>海明码</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://s1.ax1x.com/2020/10/13/0h0A0J.th.jpg">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Kyaus</span>
+                <span class="post-date sub-title">at: 2020-11-16</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h1 id="海明码设计思路："><a href="#海明码设计思路：" class="headerlink" title="海明码设计思路："></a>海明码设计思路：</h1><h2 id="基于偶校验（“1”的个数为偶数）–-gt-分成多个组-–-gt-每组一个校验位，有多个校验位-–-gt-标注出错误位置"><a href="#基于偶校验（“1”的个数为偶数）–-gt-分成多个组-–-gt-每组一个校验位，有多个校验位-–-gt-标注出错误位置" class="headerlink" title="基于偶校验（“1”的个数为偶数）–&gt; 分成多个组 –&gt; 每组一个校验位，有多个校验位 –&gt; 标注出错误位置"></a>基于偶校验（“1”的个数为偶数）–&gt; 分成多个组 –&gt; 每组一个校验位，有多个校验位 –&gt; 标注出错误位置</h2><h1 id="需要多少个校验位？"><a href="#需要多少个校验位？" class="headerlink" title="需要多少个校验位？"></a>需要多少个校验位？</h1><p>信息位：n个<br>校验位：k个~~2^k种状态<br>信息位+校验位=n+k –&gt; 所以2^k种状态应包含n+k种错误情况外加一种正确情况 –&gt; 2^k≥n+k+1<br>例如：n=4,则k=3，即需要添加3个校验位才能满足条件</p>
+<hr>
+<h2 id="海明码的解题步骤（例如信息位：1010）"><a href="#海明码的解题步骤（例如信息位：1010）" class="headerlink" title="海明码的解题步骤（例如信息位：1010）"></a>海明码的解题步骤（例如信息位：1010）</h2><h1 id="1、确定海明码的位数"><a href="#1、确定海明码的位数" class="headerlink" title="1、确定海明码的位数"></a>1、确定海明码的位数</h1><p>2^k≥n+k+1<br>n=4 –&gt; k=3<br>设信息位D4D3D2D1(1010),校验位P3P2P1,对应的海明码为：H7H6H5H4H3H2H1,共七位</p>
+<h1 id="2、确定校验位的分布"><a href="#2、确定校验位的分布" class="headerlink" title="2、确定校验位的分布"></a>2、确定校验位的分布</h1><p>检验位Pi放在海明码号为2^(i-1)的位置上   例如：P1P2P3 –&gt; 1,2,4位置<br>信息位按顺序放到其余位置，如图：<br>H7  H6  H5  H4  H3  H2  H1<br>D4  D3  D2  P3  D1  P2  P1<br>1   0   1       0</p>
+<h1 id="3、求校验位的值"><a href="#3、求校验位的值" class="headerlink" title="3、求校验位的值"></a>3、求校验位的值</h1><p>将每个信息位所处的位置用二进制表示出来<br>          P3  P2  P1  (相当于权重)<br>H3: 3 –&gt; 0   1   1<br>H5: 5 –&gt; 1   0   1<br>H6: 6 –&gt; 1   1   0<br>H7: 7 –&gt; 1   1   1<br>有1的就说明此组中有这个数<br>P1: H3,H5,H7<br>P2: H3,H6,H7<br>P3: H5,H6,H7<br>异或运算来求校验位<br>P1 = H3⊕H5⊕H7 = D1⊕D2⊕D4 = 0<br>P2 = H3⊕H6⊕H7 = D1⊕D3⊕D4 = 1<br>P3 = H5⊕H6⊕H7 = D2⊕D3⊕D4 = 0</p>
+<p>H7  H6  H5  H4  H3  H2  H1<br>D4  D3  D2  P3  D1  P2  P1<br>1   0   1   0   0   1   0</p>
+<h1 id="4、纠错"><a href="#4、纠错" class="headerlink" title="4、纠错"></a>4、纠错</h1><p>检验方程：<br>S1 = P1⊕D1⊕D2⊕D4<br>S2 = P2⊕D1⊕D3⊕D4<br>S3 = P3⊕D2⊕D3⊕D4<br>①假设接收到的是1010010(正确)<br>S1 = 0<br>S2 = 0<br>S3 = 0<br>②假设接收到的是1010000(错误)<br>S1 = 0<br>S2 = 1<br>S3 = 0</p>
+<p>S3S2S1=010 –&gt; 指明出错的位置在第二位</p>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><p>海明码具有1个比特位的纠错能力和2个比特位的检错能力<br>假如P1,P2同时出现错误，则S1=1,S2=1,S3=0,S3S2S1=011,这并不正确，不能说明是第三位错了，所以通常还需要加一个全校验位<br>H8  H7  H6  H5  H4  H3  H2  H1<br>P全 D4  D3  D2  P3  D1  P2  P1<br>1   1   0   1   0   0   1   0<br>S3S2S1 = 000且全体偶校验成功 –&gt; 无错误<br>S3S2S1 ≠ 000且全体偶校验失败 –&gt; 有一位错，纠正即可<br>S3S2S1 ≠ 000且全体偶校验成功 –&gt; 有两位错，重传</p>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDE1NS8xMDY5Mg">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a target="_blank" rel="noopener" href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2020
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="/js/search_core.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>
